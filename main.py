@@ -43,7 +43,7 @@ def prompt_user_game_type() -> GameFactory:
 
     while game_type is None:
 
-        game_type = input("Choose game : (1) Pattern or (2) Number : ")
+        game_type = input("Choose game : (1) Pattern or (2) Numeric : ")
 
         if game_type == '1':
             return GameFactory.get_factory(GameType.PATTERN)

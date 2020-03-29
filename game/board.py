@@ -50,10 +50,10 @@ class Board:
         return [self.board[::4], self.board[2:7:2]]
 
     @property
-    def all_possible_moves(self):
+    def possible_moves(self):
         """Returns all possible moves. A move is a tuple. The move[0] is the location
             (index) of the move and move[1] is the value."""
-        return product(self.all_possible_move_locations, self.all_possible_move_values)
+        return product(self.possible_move_locations, self.possible_move_values)
 
     @abstractmethod
     def has_winning_pattern(self) -> bool:
@@ -63,14 +63,14 @@ class Board:
 
     @property
     @abstractmethod
-    def all_possible_move_locations(self):
+    def possible_move_locations(self):
         """Defines the logic and returns the list of possible move locations.
         This abstract method should be implemented by the subclass."""
         pass
 
     @property
     @abstractmethod
-    def all_possible_move_values(self):
+    def possible_move_values(self):
         """Defines the logic and returns the list of possible move values.
         This abstract method should be implemented by the subclass."""
         pass

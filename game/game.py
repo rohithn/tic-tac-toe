@@ -1,9 +1,6 @@
 from abc import abstractmethod
 
 from game.board import Board
-from utils.logger import Logger
-
-logger = Logger.get_logger('Tic-Tac-Toe')
 
 
 class Game(object):
@@ -37,7 +34,7 @@ class Game(object):
             if self.board.has_winning_pattern:
                 print(player_1.name + ' wins!')
                 break
-            if len(list(self.board.all_possible_moves)) == 0:
+            if len(list(self.board.possible_moves)) == 0:
                 print('Draw!')
                 break
 
@@ -51,7 +48,7 @@ class Game(object):
             if self.board.has_winning_pattern:
                 print(player_2.name + ' wins!')
                 break
-            if len(list(self.board.all_possible_moves)) == 0:
+            if len(list(self.board.possible_moves)) == 0:
                 print('Draw!')
                 break
 

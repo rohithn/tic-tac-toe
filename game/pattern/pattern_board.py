@@ -7,11 +7,8 @@ logger = Logger.get_logger('Tic-Tac-Toe')
 class PatternBoard(Board):
 
     def __init__(self):
-        """Pass in a list of numbers that represent the board.
-            The length of the board must be a perfect square.
-            Zeroes represent empty spaces."""
         super().__init__()
-        self.values = range(1, 3)
+        self.values = range(1, 3)  # [1, 2] - 1 for X, 2 for O
 
     def __str__(self):
         out = '-------------\n'
@@ -25,6 +22,7 @@ class PatternBoard(Board):
 
     @property
     def has_winning_pattern(self):
+        """Implemented abstract method"""
         """Returns True if the patterns match in row, column or diagonal"""
         winning_patterns = [
             self.row_has_winning_pattern,
@@ -58,11 +56,11 @@ class PatternBoard(Board):
         return False
 
     @property
-    def all_possible_move_locations(self):
+    def possible_move_locations(self):
         """Returns all indexes that contain the value zero"""
         return [i for i, val in enumerate(self.board) if val == 0]
 
     @property
-    def all_possible_move_values(self):
+    def possible_move_values(self):
         """Returns all possible values that can be placed on the board"""
         return [val for val in self.values]

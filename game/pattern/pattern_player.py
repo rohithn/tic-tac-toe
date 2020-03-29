@@ -1,3 +1,5 @@
+import random
+
 from game.board import Board
 from game.player import Player
 
@@ -12,11 +14,11 @@ class PatternPlayer(Player):
         while True:
             try:
                 # make locations human readable
-                readable_locations = [i+1 for i in board.all_possible_move_locations]
+                readable_locations = [i+1 for i in board.possible_move_locations]
 
                 move_location = int(input('Enter move location {}: '.format(readable_locations))) - 1
 
-                if move_location not in board.all_possible_move_locations:
+                if move_location not in board.possible_move_locations:
                     print('Not a valid move location')
                 else:
                     break
@@ -28,10 +30,13 @@ class PatternPlayer(Player):
 
         return move_location, move_value
 
-    def find_move_by_computer(self, board: Board):
-        pass
+    def find_move_by_computer(self, board: Board) -> (int, int):
+        if self.is_first:
+            return random.choice([move for move in board.possible_moves if move[1] % 2 == 1])
+        else:
+            return random.choice([move for move in board.possible_moves if move[1] % 2 == 0])
 
-    def get_move_value(self):
+    def get_move_value(self) -> int:
         if self.is_first:
             return 1
         else:

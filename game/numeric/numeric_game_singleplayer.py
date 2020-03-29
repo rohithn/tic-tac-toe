@@ -1,23 +1,23 @@
 from game.game import Game
 from game.numeric.numeric_board import NumericBoard
-from utils.logger import Logger
-
-
-logger = Logger.get_logger('Tic-Tac-Toe')
+from game.numeric.numeric_player import NumericPlayer
 
 
 class NumericSinglePlayerGame(Game):
 
     def __init__(self):
-        logger.info('Initializing single player numeric game...')
         super().__init__(NumericBoard())
 
     def start(self):
-        # print('Started Game :: Numeric (Multi Player)')
+        print('Started Game :: Numeric (Single Player)')
 
-        # player_1 = NumericPlayer(is_human=1, is_first=True)
-        #  player_2 = NumericPlayer(is_human=1, is_first=False)
+        human_player_first = input('Playing with dumb AI. Would you like to go first [Y/n]?:').lower()
 
-        # self.play([player_1, player_2])
+        if human_player_first == '' or human_player_first == 'y':
+            player_1 = NumericPlayer('Odd', is_human=True, is_first=True)
+            player_2 = NumericPlayer('Even', is_human=False, is_first=False)
+        else:
+            player_1 = NumericPlayer('Odd', is_human=False, is_first=True)
+            player_2 = NumericPlayer('Even', is_human=True, is_first=False)
 
-        print('Not implemented')
+        self.play([player_1, player_2])

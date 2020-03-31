@@ -24,36 +24,49 @@ class Game(object):
 
         while True:
 
+            """Player 1's turn"""
             print(player_1.name + "'s turn")
 
+            """P1 - Get Move"""
             move_location_1, move_value_1 = player_1.get_move(self.board)
+
+            """P1 - Perform Move, Value"""
             self.board.perform_move(move_location_1, move_value_1)
 
             print(self.board)
 
-            if self.board.has_winning_pattern:
-                print(player_1.name + ' wins!')
-                break
-            if len(list(self.board.possible_moves)) == 0:
-                print('Draw!')
+            """Check Board for Win/Draw"""
+            if self.check_board_state_done(player_1):
                 break
 
+            """Player 2's turn"""
             print(player_2.name + "'s turn")
 
+            """P2 - Get Move, Value"""
             move_location_2, move_value_2 = player_2.get_move(self.board)
+
+            """P2 - Perform Move"""
             self.board.perform_move(move_location_2, move_value_2)
 
             print(self.board)
 
-            if self.board.has_winning_pattern:
-                print(player_2.name + ' wins!')
+            """Check Board for Win/Draw"""
+            if self.check_board_state_done(player_2):
                 break
-            if len(list(self.board.possible_moves)) == 0:
-                print('Draw!')
-                break
+
+    def check_board_state_done(self, player) -> bool:
+        """Check Board for Win/Draw"""
+        if self.board.has_winning_pattern:
+            print(player.name + ' wins!')
+            return True
+        if len(list(self.board.possible_moves)) == 0:
+            print('Draw!')
+            return True
+        return False
 
     @staticmethod
     def get_players(players):
+        """"Get first and second players"""
         first = second = None
         for player in players:
             if player.is_first:

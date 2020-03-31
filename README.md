@@ -4,6 +4,8 @@ A Tic-Tac-Toe game written in Python.
 
 ## Usage
 
+Python 3.7 is required.
+
 ```
 python src/main.py
 ```

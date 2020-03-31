@@ -5,7 +5,7 @@ A Tic-Tac-Toe game written in Python.
 ## Usage
 
 ```
-python main.py
+python src/main.py
 ```
 
 ## Modes
@@ -24,3 +24,7 @@ Both games modes are played on a 3x3 board.
 * Player-1 places any of the odd numbers from 1 to 9 and the second player-2 places even numbers from 2 to 8.
 * First player to get a sum of 15 on any row, column or diagonal wins (The row or column or diagonal can contain numbers entered by other player as well).
 * Each digit should be entered only once and cannot be repeated.
+
+## Design
+
+[Design](./doc/design.md)
